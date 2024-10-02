@@ -89,6 +89,13 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.UseRouting();
+// app.MapGet("/", () => {
+//     return "Server is running";
+// });
+
+app.MapGet("/", () => "Server is running");
+
 // test if database is connected or not
 using (var scope = app.Services.CreateScope())
 {
