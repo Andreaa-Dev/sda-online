@@ -13,6 +13,20 @@ namespace ecommerce.src.Entity
         // product + quantity
         public List<OrderDetail> OrderDetails { get; set; }
 
+
+        // public Dictionary<OrderDetail> OrderDetailDic { get; set; }
+
+
+        // seed data
+        // dictionary database 
+        // word - meanings
+        // q: 
+        // json - from internet
+        // fe: form 
+        // word
+        // meaning
+
+
         // total
 
 

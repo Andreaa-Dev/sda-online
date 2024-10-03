@@ -24,6 +24,15 @@ namespace ecommerce.src.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasPostgresEnum<Role>();
+            modelBuilder.Entity<User>()
+                        .HasIndex(u => u.Email)
+                        .IsUnique();
+
+            modelBuilder.Entity<Product>()
+                        .HasIndex(p => p.Name)
+                        .IsUnique();
+
+
         }
 
     }

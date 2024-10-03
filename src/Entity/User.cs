@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using ecommerce.src.Utils;
+using Microsoft.EntityFrameworkCore;
 
 namespace ecommerce.src.Entity
 {
@@ -11,13 +14,16 @@ namespace ecommerce.src.Entity
         public Guid Id { get; set; }
 
         // add annotation email is unique
+        [EmailAddress(ErrorMessage = "Please provide email with right format: @gmail.com ")]
+
         public string Email { get; set; }
+
+        [PasswordComplexity]
         public string Password { get; set; }
 
-        // private, protected
         public byte[]? Salt { get; set; }
 
-        // role enum
+
         public Role Role { get; set; } = Role.Customer;
 
 
