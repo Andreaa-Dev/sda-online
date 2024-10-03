@@ -9,8 +9,6 @@ namespace ecommerce.src.Utils
 {
     public class PasswordComplexityAttribute : ValidationAttribute
     {
-
-        // write my own logic
         public override bool IsValid(object value)
         {
             var password = value as string;
@@ -18,7 +16,6 @@ namespace ecommerce.src.Utils
             if (password == null) return false;
 
             if (password.Length < 8) return false;
-            // at least 1 uppercase 
             bool hasUpperCase = password.Any(char.IsUpper);
             bool hasLowerCase = password.Any(char.IsLower);
             bool hasDigit = password.Any(char.IsDigit);

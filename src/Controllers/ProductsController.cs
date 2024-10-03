@@ -20,7 +20,6 @@ namespace ecommerce.src.Controllers
             _productService = service;
         }
         [HttpPost]
-        //[Authorize(Roles = "Artist")]
         public async Task<ActionResult<ProductReadDto>> CreateOneAsync([FromBody] ProductCreateDto createDto)
         {
             var productCreated = await _productService.CreateOneAsync(createDto);

@@ -14,35 +14,17 @@ namespace ecommerce.src.Repository
         protected readonly DatabaseContext _databaseContext;
 
 
-
         public OrderRepository(DatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
             _orders = _databaseContext.Set<Order>();
         }
 
-
-        // createOneAsync
         public async Task<Order?> CreateOneAsync(Order createObject)
         {
             await _orders.AddAsync(createObject);
             await _databaseContext.SaveChangesAsync();
 
-            // orderReadDto
-            // step 1: get order detail in order
-            // await _orders.Entry(createObject).Collection(o => o.OrderDetails).LoadAsync();
-            // // step 2: get product information from orderDetail
-
-            // foreach (var detail in createObject.OrderDetails)
-            // {
-            //     await _databaseContext.Entry(detail).Reference(od => od.Product).LoadAsync();
-            // }
-
-            // return createObject;
-
-
-            // use Include
-            // order - orderDetail - product
             var orderWithDetails = await _orders
             .Include(o => o.OrderDetails)
             .ThenInclude(od => od.Product)
@@ -50,9 +32,6 @@ namespace ecommerce.src.Repository
             return orderWithDetails;
 
         }
-
-        // get list of order by user Id
-        // include 2 
 
         public async Task<List<Order>> GetOrdersByIdAsync(Guid userId)
         {
@@ -62,7 +41,6 @@ namespace ecommerce.src.Repository
             .Where(o => o.UserId == userId)
             .ToListAsync();
         }
-
 
     }
 }

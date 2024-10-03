@@ -15,7 +15,6 @@ namespace ecommerce.src.Services.category
         protected readonly CategoryRepository _categoryRepo;
         protected readonly IMapper _mapper;
 
-        // DI
         public CategoryService(CategoryRepository categoryRepo, IMapper mapper)
         {
             _categoryRepo = categoryRepo;
@@ -33,7 +32,6 @@ namespace ecommerce.src.Services.category
 
         }
 
-        // GetAllAsyncWithPagination
         public async Task<List<CategoryReadDto>> GetAllAsync(PaginationOptions paginationOptions)
         {
             var categoryList = await _categoryRepo.GetAllAsync(paginationOptions);
@@ -44,8 +42,7 @@ namespace ecommerce.src.Services.category
         public async Task<CategoryReadDto> GetByIdAsync(Guid id)
         {
             var foundCategory = await _categoryRepo.GetByIdAsync(id);
-            // TO DO: handle error
-            // throw
+
             if (foundCategory == null)
             {
                 throw CustomException.NotFound($"category with {id} cant find");
@@ -58,8 +55,12 @@ namespace ecommerce.src.Services.category
         public async Task<bool> DeleteOneAsync(Guid id)
         {
 
-            // find the category id id
             var foundCategory = await _categoryRepo.GetByIdAsync(id);
+            if (foundCategory == null)
+            {
+                throw CustomException.NotFound($"Cant found category with {id}");
+            }
+
             bool isDeleted = await _categoryRepo.DeleteOneAsync(foundCategory);
 
             if (isDeleted)
@@ -78,14 +79,8 @@ namespace ecommerce.src.Services.category
             {
                 return false;
             }
-
-            // found category
-            // updateDto
-            // foundCategory
-            // keep old one - update a part of it
             _mapper.Map(updateDto, foundCategory);
             return await _categoryRepo.UpdateOneAsync(foundCategory);
-
         }
     }
 }

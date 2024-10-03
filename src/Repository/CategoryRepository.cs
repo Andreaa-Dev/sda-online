@@ -52,22 +52,11 @@ namespace ecommerce.src.Repository
             return true;
         }
 
-
-        // way 2
-        // public async Task<bool> DeleteOneAsync(Guid id)
-        // {
-        //     find category by id
-        //     _category.Remove(category);
-        //     await _databaseContext.SaveChangesAsync();
-        //     return true;
-        // }
-
         public async Task<bool> UpdateOneAsync(Category updateCategory)
         {
             _category.Update(updateCategory);
             await _databaseContext.SaveChangesAsync();
             return true;
-            // return updateCategory;
         }
     }
 }

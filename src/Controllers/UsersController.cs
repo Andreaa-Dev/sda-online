@@ -19,28 +19,21 @@ namespace ecommerce.src.Controllers
             _userService = service;
         }
 
-
-        // create
         [HttpPost]
         public async Task<ActionResult<UserReadDto>> CreateOne([FromBody] UserCreateDto createDto)
         {
             var UserCreated = await _userService.CreateOneAsync(createDto);
-            //return Created($"api/v1/users/{UserCreated.Id}", UserCreated);
-            return Ok(UserCreated);
+            return Created($"api/v1/users/{UserCreated.Id}", UserCreated);
         }
-
-        // log in
 
         [HttpPost("signIn")]
         public async Task<ActionResult<string>> SignInUser([FromBody] UserCreateDto createDto)
         {
             var token = await _userService.SignInAsync(createDto);
-            //return Created($"api/v1/users/{UserCreated.Id}", UserCreated);
             return Ok(token);
         }
 
 
-        // get all users
         [HttpGet]
         //[Authorize]
         // [Authorize(Roles = "Admin")]
@@ -49,13 +42,6 @@ namespace ecommerce.src.Controllers
             var UserList = await _userService.GetAllAsync();
             return Ok(UserList);
         }
-
-        // update user infor
-
-        // create admin
-        // admin@gmail.com
-        // password
-        // change role => admin
 
 
     }

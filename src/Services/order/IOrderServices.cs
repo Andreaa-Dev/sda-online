@@ -11,6 +11,5 @@ namespace ecommerce.src.Services.order
         Task<OrderReadDto> CreateOneAsync(Guid userId, OrderCreateDto createDto);
         Task<List<OrderReadDto>> GetOrdersByIdAsync(Guid userId);
 
-
     }
 }

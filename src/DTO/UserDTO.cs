@@ -20,20 +20,15 @@ namespace ecommerce.src.DTO
         public class UserCreateDto
         {
             public string Email { get; set; }
+
             [PasswordComplexity]
             public string Password { get; set; }
         }
 
-        // update
-
-        // DTO -email
         public class UserUpdateDto
         {
             public string? Email { get; set; }
             public string? Password { get; set; }
-
         }
-
-
     }
 }

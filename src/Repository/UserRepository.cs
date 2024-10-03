@@ -26,17 +26,10 @@ namespace ecommerce.src.Repository
             return newUser;
         }
 
-
-        // find user by email
-
-        public async Task<User> FindByEmailAsync(string email)
+        public async Task<User?> FindByEmailAsync(string email)
         {
             return await _user.FirstOrDefaultAsync(u => u.Email == email);
         }
-
-        // sing in
-
-        //list of user
 
         public async Task<List<User>> GetAllAsync()
         {

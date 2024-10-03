@@ -14,28 +14,22 @@ namespace ecommerce.src.Utils
 {
     public class MapperProfile : Profile
     {
-
-        // constructor
         public MapperProfile()
         {
-            // category
             CreateMap<Category, CategoryReadDto>();
             CreateMap<CategoryCreateDto, Category>();
             CreateMap<CategoryUpdateDto, Category>().
             ForAllMembers(opts => opts.Condition((src, dest, srcProperty) => srcProperty != null));
 
-            // product
             CreateMap<Product, ProductReadDto>();
             CreateMap<ProductCreateDto, Product>();
             CreateMap<ProductUpdateDto, Product>()
                        .ForAllMembers(opts => opts.Condition((src, dest, srcProperty) => srcProperty != null));
 
-            // user
             CreateMap<User, UserReadDto>();
             CreateMap<UserCreateDto, User>().
             ForAllMembers(opts => opts.Condition((src, dest, srcProperty) => srcProperty != null));
 
-            // orderDetail
             CreateMap<OrderDetail, OrderDetailReadDto>();
             CreateMap<OrderDetailCreateDto, OrderDetail>().
             ForAllMembers(opts => opts.Condition((src, dest, srcProperty) => srcProperty != null));
@@ -44,7 +38,5 @@ namespace ecommerce.src.Utils
             CreateMap<OrderCreateDto, Order>().
             ForAllMembers(opts => opts.Condition((src, dest, srcProperty) => srcProperty != null));
         }
-
-
     }
 }

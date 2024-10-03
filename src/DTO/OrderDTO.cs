@@ -19,7 +19,6 @@ namespace ecommerce.src.DTO
 
         public class OrderCreateDto
         {
-            //public List<OrderDetailReadDto> OrderDetails { get; set; }
             public List<OrderDetailCreateDto> OrderDetails { get; set; }
         }
     }
