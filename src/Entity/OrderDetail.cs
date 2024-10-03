@@ -15,8 +15,10 @@ namespace ecommerce.src.Entity
         public int Quantity { get; set; }
 
         // see the product detail
-        public Product Product { get; set; }
+        // public Product Product { get; set; }
 
-        // sub 
+        // Sub-total for this item (Price * Quantity)
+        public decimal Price { get; set; }  // Price per item
+        public decimal SubTotal { get; set; }
     }
 }

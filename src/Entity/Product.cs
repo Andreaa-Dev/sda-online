@@ -18,5 +18,9 @@ namespace ecommerce.src.Entity
         public Guid CategoryId { get; set; }
         public Category Category { get; set; }
 
+        // new field
+        public decimal Price { get; set; }
+        public int StockQuantity { get; set; }
+
     }
 }

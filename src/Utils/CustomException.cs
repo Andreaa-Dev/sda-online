@@ -33,9 +33,15 @@ namespace ecommerce.src.Utils
             return new CustomException(403, message);
         }
 
+        public static CustomException InvalidOperation(string message = "Invalid Operation")
+        {
+            return new CustomException(422, message);
+        }
         public static CustomException InternalError(string message = "Internal server error")
         {
             return new CustomException(500, message);
         }
+
+
     }
 }
